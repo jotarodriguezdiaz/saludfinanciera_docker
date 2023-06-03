@@ -1,7 +1,7 @@
 version: '3.4'
 services:
   apigateway:
-    build: ./../API.Gateway/
+    build: ./../salud-financiera-api-gateway/
     ports:
       - "5003:5003"
     environment:
@@ -9,7 +9,7 @@ services:
     networks:
       - mynetwork
   finance:
-    build: ./../Finance/Finance/
+    build: ./../salud-financiera-finance/
     ports:
       - "5054:5054"
     environment:
@@ -17,7 +17,7 @@ services:
     networks:
       - mynetwork
   debts:
-    build: ./../Debts/
+    build: ./../salud-financiera-debts/
     ports:
       - "5065:5065"    
     networks:
