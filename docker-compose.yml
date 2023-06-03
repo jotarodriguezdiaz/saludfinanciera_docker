@@ -1,0 +1,50 @@
+version: '3.4'
+services:
+  apigateway:
+    build: ./API.Gateway/
+    ports:
+      - "5003:5003"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+    networks:
+      - mynetwork
+  finance:
+    build: ./Finance/Finance/
+    ports:
+      - "5054:5054"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+    networks:
+      - mynetwork
+  debts:
+    build: ./Debts/
+    ports:
+      - "5065:5065"    
+    networks:
+      - mynetwork  
+  db:
+    image: mysql:8.0
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./scripts/users.sql:/docker-entrypoint-initdb.d/users.sql
+      - ./scripts/finance.sql:/docker-entrypoint-initdb.d/finance.sql
+      - ./scripts/debts.sql:/docker-entrypoint-initdb.d/debts.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: users
+    networks:
+      - mynetwork
+  angular-app:
+    build:
+      context: ./saludfinanciera-web/
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
+    networks:
+      - mynetwork
+      
+networks:
+  mynetwork:
+
+volumes:
+  db_data: {}
