@@ -1,7 +1,7 @@
 version: '3.4'
 services:
   apigateway:
-    build: ./API.Gateway/
+    build: ./../API.Gateway/
     ports:
       - "5003:5003"
     environment:
@@ -9,7 +9,7 @@ services:
     networks:
       - mynetwork
   finance:
-    build: ./Finance/Finance/
+    build: ./../Finance/Finance/
     ports:
       - "5054:5054"
     environment:
@@ -17,7 +17,7 @@ services:
     networks:
       - mynetwork
   debts:
-    build: ./Debts/
+    build: ./../Debts/
     ports:
       - "5065:5065"    
     networks:
@@ -36,7 +36,7 @@ services:
       - mynetwork
   angular-app:
     build:
-      context: ./saludfinanciera-web/
+      context: ./../saludfinanciera-web/
       dockerfile: Dockerfile
     ports:
       - "4200:4200"
