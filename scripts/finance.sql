@@ -188,3 +188,25 @@ VALUES ('20230529174534_mvp', '7.0.0-preview.5.22302.2');
 
 COMMIT;
 
+START TRANSACTION;
+
+ALTER TABLE `Boards` ADD `Age` int NOT NULL DEFAULT 0;
+
+ALTER TABLE `Boards` ADD `FinancialHealthNote` decimal(18,2) NOT NULL DEFAULT 0.0;
+
+ALTER TABLE `Boards` ADD `Passive` decimal(18,2) NOT NULL DEFAULT 0.0;
+
+ALTER TABLE `Boards` ADD `PercentageMonthlyInvestment` decimal(18,2) NOT NULL DEFAULT 0.0;
+
+ALTER TABLE `Boards` ADD `Richness` decimal(18,2) NOT NULL DEFAULT 0.0;
+
+ALTER TABLE `Boards` ADD `SavingPercentage` decimal(18,2) NOT NULL DEFAULT 0.0;
+
+UPDATE `Boards` SET `Age` = 0, `FinancialHealthNote` = 0.0, `Passive` = 0.0, `PercentageMonthlyInvestment` = 0.0, `Richness` = 0.0, `SavingPercentage` = 0.0
+WHERE `BoardId` = 1;
+
+INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
+VALUES ('20230604085114_financial-health', '7.0.0-preview.5.22302.2');
+
+COMMIT;
+
