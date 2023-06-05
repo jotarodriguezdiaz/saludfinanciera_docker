@@ -8,6 +8,9 @@ Primero, se deben clonar los siguientes repositorios en una carpeta. Con el obje
 Con el siguiente comando se pueden clonar una a una: # git clone http://...
 
 [Apigateway](https://github.com/jotarodriguezdiaz/salud-financiera-api-gateway)
+
 [Finance](https://github.com/jotarodriguezdiaz/salud-financiera-finance)
+
 [Debts](https://github.com/jotarodriguezdiaz/saludfinanciera-web)
+
 [WEB](https://github.com/jotarodriguezdiaz/salud-financiera-debts)
